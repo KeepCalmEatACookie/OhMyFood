@@ -1,0 +1,54 @@
+@use "../utils/variable";
+@use "../utils/color";
+@use "../utils/mixin";
+
+.menus {
+    margin-bottom: 32px;
+    background-color: #f6f6f6;
+   
+    .menus_cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        @media (max-width: variable.$break) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .new {
+            position: relative;
+        }
+        .new::before {
+            content:"Nouveau";
+            position: absolute;
+            background-color: color.$tertiare;
+            height: 32px;
+            width: 80px;
+            color: darken(color.$tertiare, 50%);
+            display: grid;
+            place-items: center;
+            right: 16px;
+            top: 16px;
+
+        }
+    }
+    .card {
+        &_image {
+            border-radius: 16px 16px 0 0;
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+        }
+        @for $i from 1 through 4 {
+            &_image-#{$i} {
+                background-image: url("../assets/menu-#{$i}.jpg");
+            }
+        }
+        &_description {
+          @include mixin.animation-coeur;
+            h3, 
+            p {
+                padding: 5px;
+            }
+            
+            }
+        }
+    }

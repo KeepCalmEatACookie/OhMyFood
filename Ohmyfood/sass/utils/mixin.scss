@@ -1,0 +1,87 @@
+@use "./color";
+
+@mixin gradient {
+    
+    background-image: linear-gradient(to top, rgba(147, 86, 220, 1), rgba(255, 121, 218, 1));
+    }
+    @mixin cercle {
+    
+        @keyframes animationcercle {
+            0% {
+                transform: rotate(-270deg);
+            }
+            100% {
+                transform: rotate(0);
+            }
+        }
+    }
+    @mixin base-shadow {
+        box-shadow: 2px 1px 8px -3px color.$grisclair;
+    }
+    @mixin Zoom {
+        transform: scale(1.04);
+    }
+    @mixin fleche_gauche {
+        display: flex;
+        font-style: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Font Awesome 6 Free";
+        font-weight: 400;
+        content: "\f060";
+    }
+    @mixin coeur {
+        display: inline-block;
+        font-style: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Font Awesome 6 Free";
+        font-weight: 400;
+        content: "\f004";
+        font-size: 32px;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform:translateY(-50%);
+        color: inherit;
+        background-clip: text;
+        -webkit-background-clip: text;
+        opacity: 1;
+        transition: all 500ms ease-in-out;
+    }
+    @mixin animation-coeur {
+        position: relative;
+        background-color: white;
+        border-radius: 0 0 16px 16px;
+        &::before {
+            @include coeur;
+        }
+        &::after {
+            @include coeur;
+            @include gradient;
+            opacity: 0;
+            color: transparent;
+            font-weight: 900;
+        }
+        &:hover::after {
+            opacity: 1;
+            transform:translateY(-50%) scale(1.1);
+        }
+    }
+    @mixin boutonuniversal {
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            padding: 16px 32px;
+            border-radius: 32px;
+            border: none;
+            @include base-shadow;
+            @include gradient;
+            transition: transform 220ms;
+            margin-top: 16px;
+            cursor: pointer;
+            &:hover {
+                transform: scale(1.01);
+                opacity: 1;
+                }
+            }

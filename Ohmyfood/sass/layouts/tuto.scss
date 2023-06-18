@@ -1,0 +1,57 @@
+@use "../utils/mixin";
+@use "../utils/variable" ;
+@use "..//utils/color";
+
+.tuto {
+    counter-reset: steps;
+    margin-bottom: 32px;
+    & ol {
+        display: flex;
+        gap: 32px;
+        @media (max-width: 1000px) {
+        flex-direction: column;   
+        }
+    }
+    & li {
+        position: relative;
+        display: flex;
+        align-items: center;
+        &::before {
+            content: counter(steps);
+            counter-increment: steps;
+            color: #f6f6f6;
+            background: color.$violet;
+            border-radius: 8px;
+            width: 2 * variable.$base-hauteur;
+            height: 2 * variable.$base-hauteur;
+            display: grid;
+            bottom: 50%;
+            left: -1 * variable.$base-hauteur;
+            place-items: center;
+            border-radius: 50%;
+            position: absolute;
+            transform: translateY(+50%);
+
+        }
+        background-color: #f6f6f6;
+        padding: 24px 32px;
+        flex-grow: 1;
+        list-style-type: none;
+        @include mixin.base-shadow;/*  */
+        &:hover{
+            @include mixin.Zoom;
+            background-color: lavender;
+            i::before {
+                color: color.$violet;
+            }
+        }
+        & i.fas {
+            margin-right: 16px;
+            color: color.$grisclair;
+            font-size: 24px;
+        }
+        border-radius: 16px;
+    }
+
+
+}

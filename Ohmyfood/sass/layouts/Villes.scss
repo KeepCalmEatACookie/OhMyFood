@@ -1,0 +1,16 @@
+.Villes {
+    display: flex;
+    align-items: center;
+    background-color: #f3f3f3;
+    gap: 16px;
+    text-align: center;
+    justify-content: center;
+    padding: 8px;
+    & i {
+      font-size: 20px;
+    }
+    h2 { 
+      font-size: 20px;
+    }
+
+  }

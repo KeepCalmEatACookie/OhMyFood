@@ -1,0 +1,17 @@
+@keyframes apparition {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes chargement_site {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        visibility: hidden;
+    }
+}
